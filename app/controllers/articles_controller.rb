@@ -14,11 +14,14 @@ class ArticlesController < ApplicationController
 	def create
 		@article = Article.new(article_params)
 	 
-		@article.save
-		redirect_to @article
-	end
-	 
-	private
+		if @article.save
+			redirect_to @article
+		else 
+			render new_article_path
+		end
+	end 
+	
+	private 
 		def article_params
 			params.require(:article).permit(:title, :text)
 		end
