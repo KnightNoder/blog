@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 	 
 		if @article.save
-			redirect_to @article
+			redirect_to @article, success: "Book created!"
 		else 
 			render new_article_path
 		end
